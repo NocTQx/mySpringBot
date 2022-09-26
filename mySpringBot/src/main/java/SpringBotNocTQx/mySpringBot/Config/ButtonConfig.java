@@ -52,16 +52,15 @@ public class ButtonConfig {
         KeyboardRow kbrdThirdRow = new KeyboardRow();
         KeyboardRow kbrdForthRow = new KeyboardRow();
 
-            kbrdFirstRow.add(new KeyboardButton("Классика"));
             kbrdFirstRow.add(new KeyboardButton("Лучшие"));
-            kbrdFirstRow.add(new KeyboardButton("Кровавые фильмы"));
-            kbrdSecondRow.add(new KeyboardButton("Хочется поплакать"));
-            kbrdSecondRow.add(new KeyboardButton("Суровые мужские"));
-            kbrdSecondRow.add(new KeyboardButton("Мистика"));
-            kbrdThirdRow.add(new KeyboardButton("Тарантино рекомендует"));
-            kbrdThirdRow.add(new KeyboardButton("Про измену"));
-            kbrdThirdRow.add(new KeyboardButton("Ужасы"));
-            kbrdForthRow.add(new KeyboardButton("Я передумал(а), вернемся к началу."));
+            kbrdFirstRow.add(new KeyboardButton("Комедия")); //https://www.film.ru/compilation/luchshie-chernye-komedii
+            kbrdFirstRow.add(new KeyboardButton("Фэнтези")); //https://www.film.ru/compilation/ne-tolko-igra-prestolov-vydayushchiesya-fentezi-serialy
+            kbrdSecondRow.add(new KeyboardButton("Про юристов")); //https://www.film.ru/compilation/luchshie-filmy-i-serialy-pro-advokatov-i-sudy
+            kbrdSecondRow.add(new KeyboardButton("Детектив")); //https://www.film.ru/compilation/luchshie-detektivy-na-netflix
+            kbrdSecondRow.add(new KeyboardButton("Про любовь")); //https://www.film.ru/compilation/100-luchshih-filmov-so-slovom-lyubov-v-nazvanii
+            kbrdThirdRow.add(new KeyboardButton("Ужасы")); //https://www.film.ru/compilation/100-luchshih-filmov-uzhasov-po-versii-time-out
+            kbrdThirdRow.add(new KeyboardButton("Драма")); //https://www.film.ru/compilation/kostyumnye-dramy-v-kotoryh-net-kiry-naytli
+            kbrdForthRow.add(new KeyboardButton("Вернемся к началу."));
 
             keyboard.add(kbrdFirstRow);
             keyboard.add(kbrdSecondRow);

@@ -12,7 +12,7 @@ public class CreatingArray {
             greetingList.add("Хай");
             greetingList.add("Утречко:)");
             greetingList.add("Опять чего-то понадобилось? Ну выбирай...");
-            greetingList.add("Приветствую тебя, путник!");
+            greetingList.add("Приветствую тебя !");
             greetingList.add("Сделаю вид что мы знакомы. Как дела?");
             greetingList.add("Давненько тебя не видно было...");
             greetingList.add("А я соскучилась");

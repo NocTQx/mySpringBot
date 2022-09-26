@@ -1,5 +1,6 @@
 package SpringBotNocTQx.mySpringBot.Core;
 
+import SpringBotNocTQx.mySpringBot.LocalConstant.States;
 import SpringBotNocTQx.mySpringBot.Service.SendMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,17 +34,17 @@ public class MyNocTQxBot extends TelegramLongPollingBot {
         if (up.hasMessage() && up.getMessage().hasText()){
             try {
                 Enum state = sMsg.checkState(up.getMessage().getText().toLowerCase());
-                if (SendMessageService.States.GREETING.equals(state)) {
+                if (States.GREETING.equals(state)) {
                     execute(sMsg.createGreetingMsg(up));
-                } else if (SendMessageService.States.FAREWELL.equals(state)) {
+                } else if (States.FAREWELL.equals(state)) {
                     execute(sMsg.createFarewellMsg(up));
-                } else if (SendMessageService.States.SEARCH_FILMS.equals(state)) {
+                } else if (States.SEARCH_FILMS.equals(state)) {
                     execute(sMsg.createFilmChoice(up));
-                } else if (SendMessageService.States.SEARCH_ANIME.equals(state)) {
+                } else if (States.SEARCH_ANIME.equals(state)) {
                     execute(sMsg.createAnimeChoice(up));
-                } else if (SendMessageService.States.PLANNING_EDV.equals(state)) {
+                } else if (States.PLANNING_EDV.equals(state)) {
                     execute(sMsg.createPlans(up));
-                } else if (SendMessageService.States.FILM_GENRE.equals(state)) {
+                } else if (States.FILM_GENRE.equals(state)) {
                     execute(sMsg.returnFilmName(up));
                 } else {
                     execute(sMsg.createUnknownMessage(up));

@@ -2,6 +2,7 @@ package SpringBotNocTQx.mySpringBot.Service;
 
 import SpringBotNocTQx.mySpringBot.Config.ButtonConfig;
 import SpringBotNocTQx.mySpringBot.LocalConstant.LocalStrings;
+import SpringBotNocTQx.mySpringBot.LocalConstant.States;
 import SpringBotNocTQx.mySpringBot.Parse.ParseHTML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,14 +12,8 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-
-
 @Service
 public class SendMessageService {
-    public enum States {
-        FAREWELL, FILM_GENRE, GREETING, HELP, PLANNING_EDV,
-        SEARCH_ANIME, SEARCH_FILMS, UNKNOWN, WEATHER
-    }
 
     public final ArrayList<ArrayList<String>> allPhrases = CreatingArray.CreateArray();
     public static final Random random = new Random();
@@ -51,7 +46,11 @@ public class SendMessageService {
         if (message.equals(localStringsEnums.ANIME)) return States.SEARCH_ANIME;
         if (message.equals(localStringsEnums.PLAN)) return States.PLANNING_EDV;
         if (message.equals(localStringsEnums.HELP_MENU)) return States.HELP;
-        if (message.equals(localStringsEnums.BEST)) return States.FILM_GENRE;
+        if (message.equals(localStringsEnums.BEST) || message.equals(localStringsEnums.COMEDY)
+                || message.equals(localStringsEnums.FANTASY) || message.equals(localStringsEnums.LAWYER)
+                || message.equals(localStringsEnums.ABOUT_LOVE) || message.equals(localStringsEnums.DETECTIVE)
+                ||  message.equals(localStringsEnums.HORROR) ||  message.equals(localStringsEnums.DRAMA))
+         return States.FILM_GENRE;
         return States.UNKNOWN;
     }
 
@@ -77,7 +76,7 @@ public class SendMessageService {
         return sendMsg(allPhrases.get(5).get(0), up);
     }
     public synchronized SendMessage returnFilmName(Update up) throws IOException {
-        SendMessage sMsg = sendMsg(allPhrases.get(2).get(1) + parseHTML.parseWiki(), up);
+        SendMessage sMsg = sendMsg(allPhrases.get(2).get(1) + "\n" + parseHTML.parseAnime(), up);
         sMsg.setReplyMarkup(buttonConfig.FilmButtons());
         return sMsg;
     }
