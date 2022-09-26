@@ -9,6 +9,9 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.io.IOException;
+
+
 @ConfigurationProperties(prefix = "bot")
 @Component
 public class MyNocTQxBot extends TelegramLongPollingBot {
@@ -28,12 +31,27 @@ public class MyNocTQxBot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update up){
         if (up.hasMessage() && up.getMessage().hasText()){
-            String message = up.getMessage().getText();
-            long chatId = up.getMessage().getChatId();
             try {
-                execute(sMsg.sendMsg(chatId, message));
+                Enum state = sMsg.checkState(up.getMessage().getText().toLowerCase());
+                if (SendMessageService.States.GREETING.equals(state)) {
+                    execute(sMsg.createGreetingMsg(up));
+                } else if (SendMessageService.States.FAREWELL.equals(state)) {
+                    execute(sMsg.createFarewellMsg(up));
+                } else if (SendMessageService.States.SEARCH_FILMS.equals(state)) {
+                    execute(sMsg.createFilmChoice(up));
+                } else if (SendMessageService.States.SEARCH_ANIME.equals(state)) {
+                    execute(sMsg.createAnimeChoice(up));
+                } else if (SendMessageService.States.PLANNING_EDV.equals(state)) {
+                    execute(sMsg.createPlans(up));
+                } else if (SendMessageService.States.FILM_GENRE.equals(state)) {
+                    execute(sMsg.returnFilmName(up));
+                } else {
+                    execute(sMsg.createUnknownMessage(up));
+                }
             } catch (TelegramApiException e){
                 e.printStackTrace();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }
@@ -47,4 +65,5 @@ public class MyNocTQxBot extends TelegramLongPollingBot {
     public String getBotToken() {
         return key;
     }
+
 }
