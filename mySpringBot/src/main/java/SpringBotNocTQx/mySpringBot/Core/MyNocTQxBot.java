@@ -1,5 +1,6 @@
 package SpringBotNocTQx.mySpringBot.Core;
 
+import SpringBotNocTQx.mySpringBot.LocalConstant.FilmGenreEnum;
 import SpringBotNocTQx.mySpringBot.LocalConstant.States;
 import SpringBotNocTQx.mySpringBot.Service.SendMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,10 +45,12 @@ public class MyNocTQxBot extends TelegramLongPollingBot {
                     execute(sMsg.createAnimeChoice(up));
                 } else if (States.PLANNING_EDV.equals(state)) {
                     execute(sMsg.createPlans(up));
-                } else if (States.FILM_GENRE.equals(state)) {
-                    execute(sMsg.returnFilmName(up));
-                } else {
+                } else if (States.UNKNOWN.equals(state)){
                     execute(sMsg.createUnknownMessage(up));
+                } else {
+                    for (FilmGenreEnum genre : FilmGenreEnum.values()) {
+                        if (genre.equals(state)) execute(sMsg.returnFilmName(up, genre));
+                    }
                 }
             } catch (TelegramApiException e){
                 e.printStackTrace();

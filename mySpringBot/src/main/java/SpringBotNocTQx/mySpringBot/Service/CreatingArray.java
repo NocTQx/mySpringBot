@@ -33,10 +33,9 @@ public class CreatingArray {
 
         ArrayList<String> searchFilmList = new ArrayList<>();
             searchFilmList.add("Выберите жанр фильма:");
-            searchFilmList.add("Мое предложение на сегодня:");
 
         ArrayList<String> searchAnimeList = new ArrayList<>();
-            searchAnimeList.add("Какое аниме хотите посмотреть?");
+            searchAnimeList.add("Хмм... \n");
 
         ArrayList<String> weatherList = new ArrayList<>();
             weatherList.add("Напишите название города, пожалуйста");

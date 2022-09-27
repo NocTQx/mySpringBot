@@ -60,7 +60,7 @@ public class ButtonConfig {
             kbrdSecondRow.add(new KeyboardButton("Про любовь")); //https://www.film.ru/compilation/100-luchshih-filmov-so-slovom-lyubov-v-nazvanii
             kbrdThirdRow.add(new KeyboardButton("Ужасы")); //https://www.film.ru/compilation/100-luchshih-filmov-uzhasov-po-versii-time-out
             kbrdThirdRow.add(new KeyboardButton("Драма")); //https://www.film.ru/compilation/kostyumnye-dramy-v-kotoryh-net-kiry-naytli
-            kbrdForthRow.add(new KeyboardButton("Вернемся к началу."));
+            kbrdForthRow.add(new KeyboardButton("Вернемся к началу"));
 
             keyboard.add(kbrdFirstRow);
             keyboard.add(kbrdSecondRow);
